@@ -6,7 +6,7 @@ import com.campestre.clube.notification_application.service.EmailService;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Component;
 
-import static com.campestre.clube.notification_application.MessageExtensions.*;
+import static com.campestre.clube.notification_application.utils.MessageExtensions.*;
 
 @Component
 public class EmailConsumer {

@@ -1,4 +1,4 @@
-package com.campestre.clube.notification_application;
+package com.campestre.clube.notification_application.utils;
 
 public class MessageExtensions {
     public static final String INTERNAL_ERROR_SEND_EMAIL_MESSAGE = "Erro ao tentar enviar o email.";

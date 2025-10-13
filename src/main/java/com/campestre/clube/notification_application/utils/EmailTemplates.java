@@ -1,4 +1,4 @@
-package com.campestre.clube.notification_application;
+package com.campestre.clube.notification_application.utils;
 
 public class EmailTemplates {
 

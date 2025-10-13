@@ -1,13 +1,13 @@
 package com.campestre.clube.notification_application.service;
 
-import com.campestre.clube.notification_application.EmailTemplates;
+import com.campestre.clube.notification_application.utils.EmailTemplates;
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 
-import static com.campestre.clube.notification_application.MessageExtensions.*;
+import static com.campestre.clube.notification_application.utils.MessageExtensions.*;
 
 @Service
 public class EmailService {
