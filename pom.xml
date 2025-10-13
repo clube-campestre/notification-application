@@ -14,7 +14,7 @@
 	<groupId>com.campestre</groupId>
 	<artifactId>notification-application</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>mail.sender</name>
+	<name>notification-application</name>
 	<description>Microserviço Consumer para envio de e-mails</description>
 
 	<properties>
