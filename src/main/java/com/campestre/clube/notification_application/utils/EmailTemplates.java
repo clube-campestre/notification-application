@@ -32,7 +32,7 @@ public class EmailTemplates {
                                 <p>Olá,</p>
                                 <p>Você solicitou a recuperação de senha. Aqui está seu código:</p>
                                 <div style="font-size:20px; font-weight:bold; margin:20px 0; color:#E74C3C; text-align:center;">
-                                    %s
+                                    Seu código é: %s <br>Ele expira em 10 minutos.
                                 </div>
                                 <p>O código expira em <b>10 minutos</b>.</p>
                                 <br>

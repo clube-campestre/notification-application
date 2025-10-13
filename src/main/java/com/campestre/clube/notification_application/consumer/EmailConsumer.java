@@ -1,11 +1,13 @@
 package com.campestre.clube.notification_application.consumer;
 
 
-import com.campestre.clube.notification_application.dto.EmailMessageDto;
+import com.campestre.clube.notification_application.dto.ResetPasswordEmailDto;
 import com.campestre.clube.notification_application.service.EmailService;
+import com.campestre.clube.notification_application.utils.EmailTemplates;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Component;
 
+import static com.campestre.clube.notification_application.enums.NotificationTypeEnum.RESET_PASSWORD_EMAIL;
 import static com.campestre.clube.notification_application.utils.MessageExtensions.*;
 
 @Component
@@ -17,9 +19,15 @@ public class EmailConsumer {
         this.emailService = emailService;
     }
 
-    @RabbitListener(queues = "${rabbitmq.queuename}")
-    public void consume(EmailMessageDto message) {
-        System.out.println(QUEUE_RECEIVED_MESSAGE.formatted(message.getEmail(), message.getCode()));
-        emailService.sendEmail(message.getEmail(), SUBJECT_RESET_PASSWORD_EMAIL, message.getCode());
+    @RabbitListener(queues = "${rabbitmq.queuename.resetpassword}")
+    public void consumeResetPassword(ResetPasswordEmailDto message) {
+        System.out.println(
+                QUEUE_RECEIVED_MESSAGE.formatted(RESET_PASSWORD_EMAIL.name(), message.getEmail(), message.getCode())
+        );
+        emailService.sendEmail(
+                message.getNotificationType(),
+                message.getEmail(),
+                EmailTemplates.htmlEmailResetPasswordTemplate(message.getCode())
+        );
     }
 }

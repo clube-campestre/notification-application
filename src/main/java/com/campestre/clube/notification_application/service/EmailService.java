@@ -1,5 +1,6 @@
 package com.campestre.clube.notification_application.service;
 
+import com.campestre.clube.notification_application.enums.NotificationTypeEnum;
 import com.campestre.clube.notification_application.utils.EmailTemplates;
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
@@ -18,19 +19,19 @@ public class EmailService {
         this.mailSender = mailSender;
     }
 
-    public void sendEmail(String to, String subject, String code) {
+    public void sendEmail(NotificationTypeEnum notificationType, String to, String text) {
         try {
             MimeMessage mimeMessage = mailSender.createMimeMessage();
             MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, "utf-8");
 
             helper.setTo(to);
-            helper.setSubject(subject);
-            helper.setText(EmailTemplates.htmlEmailResetPasswordTemplate(code), true);
+            helper.setSubject(notificationType.getSubject());
+            helper.setText(text, true);
 
             mailSender.send(mimeMessage);
-            System.out.println(QUEUE_RECEIVED_RESET_PASSWORD_MESSAGE.formatted(to, code));
+            System.out.println(EMAIL_SEND_MESSAGE.formatted(to, notificationType.getSubject()));
         } catch (MessagingException e) {
-            throw new RuntimeException(INTERNAL_ERROR_SEND_EMAIL_MESSAGE);
+            throw new RuntimeException(INTERNAL_ERROR_SEND_EMAIL_MESSAGE.formatted(notificationType.getSubject(), to));
         }
     }
 }
