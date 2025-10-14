@@ -1,7 +1,6 @@
 package com.campestre.clube.notification_application.service;
 
 import com.campestre.clube.notification_application.enums.NotificationTypeEnum;
-import com.campestre.clube.notification_application.utils.EmailTemplates;
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
 import org.springframework.mail.javamail.JavaMailSender;

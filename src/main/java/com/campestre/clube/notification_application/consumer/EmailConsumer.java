@@ -1,6 +1,5 @@
 package com.campestre.clube.notification_application.consumer;
 
-
 import com.campestre.clube.notification_application.dto.ResetPasswordEmailDto;
 import com.campestre.clube.notification_application.service.EmailService;
 import com.campestre.clube.notification_application.utils.EmailTemplates;
