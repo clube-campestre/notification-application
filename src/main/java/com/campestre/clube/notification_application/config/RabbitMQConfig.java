@@ -5,6 +5,7 @@ import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
 import org.springframework.amqp.support.converter.MessageConverter;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -13,6 +14,7 @@ import org.springframework.context.annotation.Configuration;
 @ConfigurationProperties(prefix = "rabbitmq")
 public class RabbitMQConfig {
 
+    @Value("${rabbitmq.queuename.resetpassword}")
     private String queuename;
 
     public String getQueuename() {
@@ -24,7 +26,7 @@ public class RabbitMQConfig {
 
     @Bean
     public Queue emailQueue() {
-        return new Queue(queuename, true); // durable = true
+        return new Queue(queuename, true);
     }
 
     @Bean
